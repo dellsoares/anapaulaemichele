@@ -2,80 +2,80 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ana Paula & Michele</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana Paula & Michele | Nosso Sim</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <header>
 <div class="logo">Ana Paula <span>&</span> Michele</div>
-<button class="menu">☰</button>
-<nav>
-<a>História</a>
-<a>Minas</a>
-<a>Momentos</a>
-<a>RSVP</a>
-</nav>
+<nav><a href="#historia">História</a><a href="#minas">Minas</a><a href="#galeria">Momentos</a><a href="#rsvp">RSVP</a></nav>
 </header>
 
 <section class="hero">
 <img src="images/capa_1.jpg">
-<div class="veil"></div>
+<div class="hero-gradient"></div>
 <div class="hero-text">
-<p>20 • 09 • 2026</p>
+<p>20 • SETEMBRO • 2026</p>
 <h1>Ana Paula<br>& Michele</h1>
-<h3>Uma história entre montanhas, sabores e encontros.</h3>
+<h3>Um amor entre montanhas, sabores e encontros.</h3>
+<a href="#rsvp">Confirmar presença</a>
 </div>
 </section>
 
-<section class="intro">
-<div class="texture">
+<section id="historia" class="story">
+<div class="glass">
 <img src="images/historia_1.jpg">
 <div>
-<span>Nossa história</span>
+<small>NOSSA HISTÓRIA</small>
 <h2>O amor mora nos detalhes</h2>
-<p>Entre cafés, viagens e momentos simples construímos uma história que hoje queremos compartilhar.</p>
+<p>Entre cafés demorados, viagens e pequenas descobertas, construímos uma história feita de carinho e escolhas.</p>
 </div>
 </div>
 </section>
 
-<section class="experience">
-<h2>Uma experiência em Minas</h2>
+<section id="minas" class="minas">
+<h2>Guia afetivo de Minas</h2>
 <div class="grid">
-<article><img src="icons/coffee.svg"><h3>Sabores</h3><p>Café passado, receitas e memórias.</p></article>
-<article><img src="icons/mountain.svg"><h3>Paisagens</h3><p>Serras e caminhos que acolhem.</p></article>
-<article><img src="icons/heart.svg"><h3>Encontros</h3><p>Pessoas que fazem parte.</p></article>
+<div>☕<h3>Sabores</h3><p>Café, pão de queijo e boas conversas.</p></div>
+<div>🌿<h3>Natureza</h3><p>Serras, jardins e caminhos.</p></div>
+<div>♡<h3>Encontros</h3><p>Pessoas que fazem parte.</p></div>
 </div>
 </section>
 
 <section class="timeline">
 <h2>Nossa jornada</h2>
-<div class="line">
-<div>2019<br><small>Primeiro encontro</small></div>
-<div>2022<br><small>Novos sonhos</small></div>
-<div>2026<br><small>Nosso sim</small></div>
+<div class="grid">
+<div>2019<br>Primeiro encontro</div>
+<div>2022<br>Novos sonhos</div>
+<div>2026<br>Nosso sim</div>
 </div>
 </section>
 
-<section class="gallery">
-<h2>Momentos</h2>
-<div class="photos">
-<img src="images/galeria_1.jpg">
-<img src="images/galeria_2.jpg">
-<img src="images/galeria_3.jpg">
+<section class="map">
+<h2>Nosso roteiro</h2>
+<div class="route">♡ ─ ☕ ─ 🌄 ─ 🏡 ─ ♡</div>
+<p>Ouro Preto • Cafés • Paisagens • Memórias</p>
+</section>
+
+<section id="galeria">
+<h2>Nossos momentos</h2>
+<div class="gallery">
+<img src="images/galeria_1.jpg"><img src="images/galeria_2.jpg"><img src="images/galeria_3.jpg">
 </div>
 </section>
 
-<section class="rsvp">
-<h2>Confirme sua presença</h2>
+<section id="rsvp" class="rsvp">
+<h2>Deixe seu carinho</h2>
 <form>
 <input placeholder="Seu nome">
-<textarea placeholder="Mensagem para as noivas"></textarea>
+<select><option>Confirmarei presença</option><option>Não poderei ir</option></select>
+<textarea placeholder="Mensagem para Ana Paula e Michele"></textarea>
 <button>Enviar</button>
 </form>
 </section>
 
-<footer>Ana Paula & Michele ♥</footer>
+<footer>Ana Paula & Michele • Minas Gerais</footer>
+<script src="js/script.js"></script>
 </body>
 </html>

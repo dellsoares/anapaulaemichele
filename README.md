@@ -1,10 +1,9 @@
-Ana Paula & Michele V3
+Ana Paula & Michele Wedding
 
-Substituir imagens:
-images/capa_1.jpg
-images/historia_1.jpg
-images/galeria_1.jpg
-images/galeria_2.jpg
-images/galeria_3.jpg
+Troque as imagens na pasta images.
+Estrutura pronta para GitHub Pages.
 
-Pronto para GitHub Pages.
+Próximos upgrades possíveis:
+Firebase RSVP
+Painel convidados
+Mensagens em tempo real
