@@ -1,0 +1,9 @@
+Substitua estas imagens:
+capa_1.jpg
+capa_2.jpg
+historia_1.jpg
+historia_2.jpg
+minas_1.jpg
+galeria_1.jpg
+galeria_2.jpg
+mapa_1.jpg

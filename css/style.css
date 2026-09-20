@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Montserrat&display=swap');
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#FBF5DC;color:#594536;font-family:Montserrat}
+
+header{position:fixed;top:0;width:100%;z-index:10;padding:22px 7%;display:flex;justify-content:space-between;background:#425B4BCC;backdrop-filter:blur(10px);color:white}
+
+.logo{font-family:'Cormorant Garamond';font-size:32px}
+.logo span{color:#F8AD7B}
+
+nav a{color:white;text-decoration:none;margin:12px}
+
+.hero{height:100vh;position:relative}
+.hero img{width:100%;height:100%;object-fit:cover;filter:blur(2px)}
+.shade{position:absolute;inset:0;background:linear-gradient(120deg,#425B4BDD,#F8AD7B88)}
+.hero-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:white}
+.hero h1{font-family:'Cormorant Garamond';font-size:90px;margin:20px}
+.hero a,button{background:#F8AD7B;color:white;padding:15px 35px;border-radius:40px;border:0;text-decoration:none}
+
+section{padding:100px 8%}
+.paper{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.paper img{width:100%;border-radius:35px;filter:brightness(.8)}
+h2{font-family:'Cormorant Garamond';font-size:55px}
+
+.green,.message{background:#829B84;color:white;text-align:center}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.cards div{padding:35px;background:#FBF5DC;color:#594536;border-radius:30px}
+
+.day{background:#425B4B;color:white;text-align:center}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.photos img{width:100%;height:350px;object-fit:cover;border-radius:35px;filter:blur(1px);transition:.4s}
+.photos img:hover{filter:none;transform:translateY(-10px)}
+
+.quote{background:#FBF5DC;padding:40px;border-radius:30px;color:#594536}
+input,select,textarea{width:100%;padding:18px;margin:8px;border:0;border-radius:20px}
+
+footer{background:#594536;color:white;text-align:center;padding:35px}
+
+@media(max-width:800px){
+nav{display:none}
+.hero h1{font-size:55px}
+.paper,.cards,.photos{grid-template-columns:1fr}
+}
