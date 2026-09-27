@@ -24,7 +24,10 @@ video.addEventListener("ended",()=>{
 video.currentTime=Math.max(0,video.duration-0.01);
 video.pause();
 });
-app.onclick=()=>nextAction();
+app.onclick=null;
+video.addEventListener("ended",()=>{
+  app.onclick=()=>nextAction();
+});
 }
 
 function home(){
@@ -62,9 +65,12 @@ video.addEventListener("ended",()=>{
 video.currentTime=Math.max(0,video.duration-0.01);
 video.pause();
 });
-app.onclick=()=>{
-window.open("https://site.lejour.com.br/ana-e-michele#confirmacao-de-presenca","_blank");
-};
+app.onclick=null;
+video.addEventListener("ended",()=>{
+  app.onclick=()=>{
+    window.open("https://site.lejour.com.br/ana-e-michele#confirmacao-de-presenca","_blank");
+  };
+});
 }
 
 home();
