@@ -1,6 +1,5 @@
 const app = document.getElementById("app");
 const IMG = "assets/images/";
-const VID = "assets/videos/";
 const SITE = "https://site.lejour.com.br/ana-e-michele";
 
 const questions = [
@@ -15,15 +14,15 @@ const questions = [
 
 const results = {
   low: {
-    img: "resultado-1-4.jpg",
+    img: "r1.jpg",
     text: "Eita, passou meio longe. Ou será que estamos muito misteriosas? Pra descobrir, é só confirmar sua presença e vir comemorar com a gente!"
   },
   mid: {
-    img: "resultado-5-6.jpg",
+    img: "r2.jpg",
     text: "Passou pertinho mas não gabaritou. Então podemos pedir algo muito importante: Que confirme sua presença já!"
   },
   top: {
-    img: "resultado-7.jpg",
+    img: "r3.jpg",
     text: "Quem acerta tudo já é de casa. Então esperamos que já tenha confirmado presença porque depois de nós duas, você é a pessoa mais importante do evento!"
   }
 };
@@ -35,7 +34,7 @@ const ICONS = {
   check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>'
 };
 
-let index = 0, score = 0;
+let index = 0, score = 0, countdownTimer = null;
 
 function typeText(el, text, onComplete) {
   el.textContent = "";
@@ -50,6 +49,7 @@ function typeText(el, text, onComplete) {
 }
 
 function home() {
+  clearInterval(countdownTimer);
   index = 0;
   score = 0;
   app.innerHTML = `
@@ -110,30 +110,36 @@ function answer() {
 }
 
 function loading() {
+  let seconds = 5;
   app.innerHTML = `
     <div class="screen loading">
-      <video src="${VID}loading.mp4" autoplay muted playsinline></video>
+      <video src="${IMG}loading.mp4" autoplay muted playsinline loop></video>
+      <div class="loading-info">
+        <p class="loading-label">Carregando seu resultado…</p>
+        <p class="loading-count" id="count">${seconds}</p>
+      </div>
     </div>`;
   const video = app.querySelector("video");
-  let done = false;
-  const next = () => {
-    if (done) return;
-    done = true;
-    clearTimeout(fallback);
-    result();
-  };
-  const fallback = setTimeout(next, 5500);
-  video.addEventListener("ended", next);
-  video.addEventListener("error", next);
   const p = video.play();
   if (p && p.catch) p.catch(() => {});
+  const count = document.getElementById("count");
+  clearInterval(countdownTimer);
+  countdownTimer = setInterval(() => {
+    seconds--;
+    if (seconds <= 0) {
+      clearInterval(countdownTimer);
+      result();
+    } else {
+      count.textContent = seconds;
+    }
+  }, 1000);
 }
 
 function result() {
   const r = score >= 7 ? results.top : score >= 5 ? results.mid : results.low;
   app.innerHTML = `
     <div class="screen result" style="background-image:url('${IMG}${r.img}')">
-      <p class="text">${r.text}</p>
+      <p class="text result-text">${r.text}</p>
       <div class="actions">
         <button class="icon-btn" id="redo" aria-label="Refazer" title="Refazer">${ICONS.redo}</button>
         <div class="actions-center">
