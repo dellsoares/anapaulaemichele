@@ -1,4 +1,5 @@
 const app = document.getElementById("app");
+const IMG = "assets/images/";
 
 const questions = [
   ["Como a Mi e a Paulinha se conheceram?", ["Trilha", "Evento corporativo", "Tinder", "Amigos em comum"], 2, "Tinder. A gente começa a história num “match” online e traz o amor para ser parte do que vivemos no mundo real.", "resposta-1.jpg"],
@@ -15,7 +16,7 @@ let index = 0, score = 0;
 function typeText(el, text, onComplete) {
   el.textContent = "";
   let i = 0;
-  let t = setInterval(() => {
+  const t = setInterval(() => {
     el.textContent += text[i++] || "";
     if (i >= text.length) {
       clearInterval(t);
@@ -25,4 +26,75 @@ function typeText(el, text, onComplete) {
 }
 
 function home() {
-  app.innerHTML = `<div class="screen cover"><img src="assets/images/tela-inicial.jpg"><button onclick="question()">
+  index = 0;
+  score = 0;
+  app.innerHTML = `
+    <div class="screen cover">
+      <img src="${IMG}tela-inicial.jpg" alt="Match com o casal">
+      <button id="start">INICIAR</button>
+    </div>`;
+  document.getElementById("start").onclick = question;
+}
+
+function question() {
+  const [q, opts, correct] = questions[index];
+  app.innerHTML = `
+    <div class="screen question">
+      <h2>${q}</h2>
+      <div class="options"></div>
+    </div>`;
+  const box = app.querySelector(".options");
+  opts.forEach((o, i) => {
+    const b = document.createElement("button");
+    b.textContent = o;
+    b.onclick = () => choose(i, b, box);
+    box.appendChild(b);
+  });
+}
+
+function choose(i, btn, box) {
+  const correct = questions[index][2];
+  const buttons = box.querySelectorAll("button");
+  buttons.forEach(b => (b.disabled = true));
+  if (i === correct) {
+    score++;
+    btn.classList.add("correct");
+  } else {
+    btn.classList.add("wrong");
+    buttons[correct].classList.add("correct");
+  }
+  setTimeout(answer, 1000);
+}
+
+function answer() {
+  const [, , , text, img] = questions[index];
+  app.innerHTML = `
+    <div class="screen answer" style="background-image:url('${IMG}${img}')">
+      <div class="top-content">
+        <p class="text"></p>
+        <button class="confirm" style="visibility:hidden">${index === questions.length - 1 ? "VER RESULTADO" : "PRÓXIMA"}</button>
+      </div>
+    </div>`;
+  const p = app.querySelector(".text");
+  const btn = app.querySelector(".confirm");
+  typeText(p, text, () => (btn.style.visibility = "visible"));
+  btn.onclick = () => {
+    index++;
+    index < questions.length ? question() : result();
+  };
+}
+
+function result() {
+  let img = "resultado-1-3.jpg";
+  if (score >= 7) img = "resultado-7.jpg";
+  else if (score >= 4) img = "resultado-4-6.jpg";
+  app.innerHTML = `
+    <div class="screen result">
+      <img src="${IMG}${img}" alt="Resultado">
+      <p class="text">Você acertou ${score} de ${questions.length}!</p>
+      <button class="confirm" id="again">JOGAR NOVAMENTE</button>
+    </div>`;
+  document.getElementById("again").onclick = home;
+}
+
+home();
