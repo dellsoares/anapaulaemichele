@@ -1,82 +1,140 @@
+* {
+  box-sizing: border-box;
+}
 
-*{box-sizing:border-box}
-body{
-margin:0;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:#758064;
-font-family:"Courier New",monospace;
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #758064;
+  font-family: "Courier New", monospace;
 }
-#app{
-width:min(100vw,420px);
-aspect-ratio:4/5;
-position:relative;
-overflow:hidden;
-background:url('../assets/images/modelo fundo.jpg') center/cover;
-border-radius:0;
+
+/* Mantém exatamente o mesmo formato e proporção 4/5 em celulares, tablets e PCs */
+#app {
+  width: min(100vw, 420px, calc(100dvh * 0.8));
+  aspect-ratio: 4 / 5;
+  position: relative;
+  overflow: hidden;
+  background: url('../assets/images/modelo fundo.jpg') center / cover no-repeat;
+  border-radius: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
-.screen{
-position:absolute;
-inset:0;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-padding:24px;
-text-align:center;
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
 }
-.cover img{
-width:100%;
-height:100%;
-object-fit:cover;
-position:absolute;
-inset:0;
+
+/* Tela inicial */
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
 }
-.cover button{
-position:absolute;
-bottom:40px;
-background:#687552;
-color:white;
-border:0;
-padding:15px 45px;
-font-size:28px;
-font-weight:bold;
-border-radius:12px;
-cursor:pointer;
+
+.cover button {
+  position: absolute;
+  bottom: 40px;
+  background: #687552;
+  color: white;
+  border: 0;
+  padding: 15px 45px;
+  font-size: 28px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
 }
-.question h2{
-font-size:22px;
-margin:10px;
-color:#fff;
+
+/* Tela de perguntas */
+.question h2 {
+  font-size: 22px;
+  margin: 10px 0 20px 0;
+  color: #fff;
 }
-.options button{
-display:block;
-width:100%;
-margin:8px 0;
-padding:12px;
-border-radius:20px;
-border:2px solid #fff;
-background:#ffffffdd;
-font-size:16px;
-cursor:pointer;
+
+.options {
+  width: 100%;
 }
-.answer img,.result img{
-width:90%;
-border-radius:20px;
+
+.options button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 20px;
+  border: 2px solid #fff;
+  background: #ffffffdd;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-.text{
-color:white;
-font-size:18px;
-line-height:1.4;
-margin:15px;
+
+/* Cores de validação das respostas */
+.options button.correct {
+  background: #2e7d32 !important;
+  color: #fff !important;
+  border-color: #fff !important;
 }
-.confirm{
-background:#687552;
-color:#fff;
-border:0;
-padding:12px 30px;
-border-radius:15px;
-font-size:18px;
+
+.options button.wrong {
+  background: #c62828 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Tela de comentário pós-resposta: imagem ao fundo e texto na parte superior */
+.screen.answer {
+  justify-content: flex-start;
+  padding-top: 28px;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.screen.answer .top-content {
+  width: 100%;
+  max-height: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result img {
+  width: 90%;
+  border-radius: 20px;
+}
+
+.text {
+  color: white;
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 0 10px 14px 10px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.confirm {
+  background: #687552;
+  color: #fff;
+  border: 0;
+  padding: 12px 30px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 6px;
 }
